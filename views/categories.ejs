@@ -1,0 +1,52 @@
+<%- include('./partials/header', { title }) %>
+
+	<section class="page-hero">
+		<div class="container">
+			<h1>
+				<%= title %>
+			</h1>
+			<p>Browse service project categories and find the cause that speaks to you.</p>
+		</div>
+	</section>
+
+	<section class="categories-section">
+		<div class="container">
+			<div class="category-grid">
+
+				<article class="category-card">
+					<div class="category-icon">&#127807;</div>
+					<h2>Environmental</h2>
+					<p>Projects focused on conservation, sustainability, pollution reduction, and protecting natural
+						habitats.</p>
+					<a href="/projects" class="btn btn-outline">View Projects</a>
+				</article>
+
+				<article class="category-card">
+					<div class="category-icon">&#127979;</div>
+					<h2>Educational</h2>
+					<p>Tutoring, mentorship, literacy programs, and initiatives that expand access to quality education.
+					</p>
+					<a href="/projects" class="btn btn-outline">View Projects</a>
+				</article>
+
+				<article class="category-card">
+					<div class="category-icon">&#129309;</div>
+					<h2>Community Service</h2>
+					<p>Food drives, shelter support, neighborhood improvement, and programs that strengthen the local
+						community.</p>
+					<a href="/projects" class="btn btn-outline">View Projects</a>
+				</article>
+
+				<article class="category-card">
+					<div class="category-icon">&#9829;</div>
+					<h2>Health and Wellness</h2>
+					<p>Health fairs, fitness programs, mental health support, and services that promote community
+						well-being.</p>
+					<a href="/projects" class="btn btn-outline">View Projects</a>
+				</article>
+
+			</div>
+		</div>
+	</section>
+
+	<%- include('./partials/footer') %>

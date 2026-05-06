@@ -1,0 +1,41 @@
+<%- include('./partials/header', { title }) %>
+
+	<section class="hero">
+		<div class="hero-inner">
+			<h1>
+				<%= title %>
+			</h1>
+			<p class="hero-subtitle">Welcome to our community service platform. Connecting people with organizations and
+				projects that make a difference.</p>
+			<div class="hero-actions">
+				<a href="/organizations" class="btn btn-primary">View Organizations</a>
+				<a href="/projects" class="btn btn-secondary">Browse Projects</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="features">
+		<div class="container">
+			<h2 class="section-title">What We Do</h2>
+			<div class="feature-grid">
+				<div class="feature-card">
+					<div class="feature-icon">&#127758;</div>
+					<h3>Connect Communities</h3>
+					<p>We bridge the gap between volunteers and organizations that need help in your local area.</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">&#9997;&#65039;</div>
+					<h3>Service Projects</h3>
+					<p>Browse hundreds of service projects across multiple categories and find opportunities to
+						contribute.</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">&#127942;</div>
+					<h3>Make an Impact</h3>
+					<p>Track your volunteer hours and see the real difference your efforts make in the community.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<%- include('./partials/footer') %>

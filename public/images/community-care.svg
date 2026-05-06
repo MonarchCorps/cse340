@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Community Care Network">
+  <circle cx="100" cy="100" r="90" fill="#fce7f3" stroke="#db2777" stroke-width="4"/>
+  <!-- Heart shape -->
+  <path d="M100 140 C60 110 40 85 50 68 C58 54 75 52 85 62 C90 67 95 74 100 80 C105 74 110 67 115 62 C125 52 142 54 150 68 C160 85 140 110 100 140Z" fill="#db2777" opacity="0.85"/>
+  <!-- Three people icons simplified -->
+  <circle cx="100" cy="90" r="12" fill="#ffffff" opacity="0.9"/>
+  <text x="100" y="165" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#9d174d">Community Care</text>
+</svg>
