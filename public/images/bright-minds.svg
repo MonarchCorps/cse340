@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Bright Minds Academy">
+  <circle cx="100" cy="100" r="90" fill="#dbeafe" stroke="#2563eb" stroke-width="4"/>
+  <!-- Light bulb shape -->
+  <circle cx="100" cy="85" r="32" fill="#2563eb" opacity="0.8"/>
+  <rect x="87" y="113" width="26" height="10" rx="3" fill="#1d4ed8"/>
+  <rect x="90" y="123" width="20" height="8" rx="3" fill="#1d4ed8"/>
+  <!-- Rays -->
+  <line x1="100" y1="40" x2="100" y2="28" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+  <line x1="135" y1="50" x2="143" y2="42" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+  <line x1="148" y1="85" x2="160" y2="85" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+  <line x1="65" y1="50" x2="57" y2="42" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+  <line x1="52" y1="85" x2="40" y2="85" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+  <text x="100" y="165" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8">Bright Minds</text>
+</svg>
