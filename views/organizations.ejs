@@ -13,41 +13,23 @@
 		<div class="container">
 			<div class="org-grid">
 
-				<article class="org-card">
-					<div class="org-img-wrap">
-						<img src="/images/green-earth.svg" alt="Green Earth Foundation logo" />
-					</div>
-					<div class="org-body">
-						<h2>Green Earth Foundation</h2>
-						<p>Dedicated to environmental conservation and sustainability initiatives. We organize tree
-							planting, clean-up drives, and eco-education programs.</p>
-						<a href="/projects" class="btn btn-outline">View Projects</a>
-					</div>
-				</article>
-
-				<article class="org-card">
-					<div class="org-img-wrap">
-						<img src="/images/bright-minds.svg" alt="Bright Minds Academy logo" />
-					</div>
-					<div class="org-body">
-						<h2>Bright Minds Academy</h2>
-						<p>Providing free tutoring, mentorship, and educational resources to underserved youth in our
-							community.</p>
-						<a href="/projects" class="btn btn-outline">View Projects</a>
-					</div>
-				</article>
-
-				<article class="org-card">
-					<div class="org-img-wrap">
-						<img src="/images/community-care.svg" alt="Community Care Network logo" />
-					</div>
-					<div class="org-body">
-						<h2>Community Care Network</h2>
-						<p>Supporting families in need through food drives, shelter assistance, and health and wellness
-							programs.</p>
-						<a href="/projects" class="btn btn-outline">View Projects</a>
-					</div>
-				</article>
+				<% if (organizations && organizations.length) { %>
+					<% organizations.forEach(function(org) { %>
+					<article class="org-card">
+						<div class="org-img-wrap">
+							<img src="/images/<%= org.logo_filename %>" alt="<%= org.name %> logo" />
+						</div>
+						<div class="org-body">
+							<h2><%= org.name %></h2>
+							<p><%= org.description %></p>
+							<p><strong>Contact:</strong> <%= org.contact_email %></p>
+							<a href="/projects" class="btn btn-outline">View Projects</a>
+						</div>
+					</article>
+					<% }) %>
+				<% } else { %>
+					<p>No organizations available.</p>
+				<% } %>
 
 			</div>
 		</div>

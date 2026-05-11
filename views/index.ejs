@@ -38,4 +38,28 @@
 		</div>
 	</section>
 
+	<section class="org-preview">
+		<div class="container">
+			<h2 class="section-title">Featured Organizations</h2>
+			<div class="org-grid">
+				<% if (organizations && organizations.length) { %>
+					<% organizations.forEach(function(org) { %>
+					<article class="org-card">
+						<div class="org-img-wrap">
+							<img src="/images/<%= org.logo_filename %>" alt="<%= org.name %> logo" />
+						</div>
+						<div class="org-body">
+							<h3><%= org.name %></h3>
+							<p><%= org.description %></p>
+							<a href="/organizations" class="btn btn-outline">View All</a>
+						</div>
+					</article>
+					<% }) %>
+				<% } else { %>
+					<p>No organizations to preview.</p>
+				<% } %>
+			</div>
+		</div>
+	</section>
+
 	<%- include('./partials/footer') %>
