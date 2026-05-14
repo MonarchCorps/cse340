@@ -13,12 +13,4 @@ router.get('/', async (req, res) => {
 	}
 })
 
-router.get('/projects', async (req, res) => {
-	res.render('projects', { title: 'Service Projects' })
-})
-
-router.get('/categories', async (req, res) => {
-	res.render('categories', { title: 'Categories' })
-})
-
 export default router

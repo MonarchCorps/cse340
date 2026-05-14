@@ -70,6 +70,10 @@ img {
 	padding: 0 1rem;
 }
 
+.org-preview {
+	margin-bottom: 40px;
+}
+
 .main-content {
 	flex: 1;
 }
