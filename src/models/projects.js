@@ -7,6 +7,7 @@ const getAllProjects = async() => {
             p.title,
             p.description,
             p.location,
+            p.date,
             p.time_commitment,
             p.volunteers_needed,
             o.name AS organization_name,

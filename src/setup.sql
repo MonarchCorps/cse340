@@ -34,6 +34,7 @@ CREATE TABLE service_project (
     title VARCHAR(150) NOT NULL,
     description TEXT NOT NULL,
     location VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
     time_commitment VARCHAR(100) NOT NULL,
     volunteers_needed INTEGER NOT NULL CHECK (volunteers_needed > 0)
 );
@@ -50,11 +51,11 @@ INSERT INTO category (name) VALUES
 ('Community Service'),
 ('Health and Wellness');
 
-INSERT INTO service_project (organization_id, title, description, location, time_commitment, volunteers_needed) VALUES
-(1, 'City Park Cleanup', 'Join us every Saturday morning to clean up litter, restore trails, and plant native species in our local parks.', 'Central Park', '3 hours / week', 20),
-(2, 'After-School Tutoring Program', 'Provide one-on-one tutoring in math, science, and reading to students in grades 3-8 after school hours.', 'Eastside Community Center', '2 hours / week', 15),
-(3, 'Monthly Food Drive', 'Help collect, sort, and distribute food donations to families in need throughout the city.', 'Downtown Food Bank', '4 hours / month', 30),
-(3, 'Community Health Fair', 'Assist with organizing and running free health screenings, fitness workshops, and wellness consultations.', 'Riverside Convention Center', '6 hours (one-time event)', 50);
+INSERT INTO service_project (organization_id, title, description, location, date, time_commitment, volunteers_needed) VALUES
+(1, 'City Park Cleanup', 'Join us every Saturday morning to clean up litter, restore trails, and plant native species in our local parks.', 'Central Park', '2026-06-07', '3 hours / week', 20),
+(2, 'After-School Tutoring Program', 'Provide one-on-one tutoring in math, science, and reading to students in grades 3-8 after school hours.', 'Eastside Community Center', '2026-06-10', '2 hours / week', 15),
+(3, 'Monthly Food Drive', 'Help collect, sort, and distribute food donations to families in need throughout the city.', 'Downtown Food Bank', '2026-06-14', '4 hours / month', 30),
+(3, 'Community Health Fair', 'Assist with organizing and running free health screenings, fitness workshops, and wellness consultations.', 'Riverside Convention Center', '2026-07-19', '6 hours (one-time event)', 50);
 
 INSERT INTO service_project_category (project_id, category_id) VALUES
 (1, 1),
