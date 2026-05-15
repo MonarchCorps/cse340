@@ -52,17 +52,44 @@ INSERT INTO category (name) VALUES
 ('Health and Wellness');
 
 INSERT INTO service_project (organization_id, title, description, location, date, time_commitment, volunteers_needed) VALUES
+-- BrightFuture Builders (org 1)
 (1, 'City Park Cleanup', 'Join us every Saturday morning to clean up litter, restore trails, and plant native species in our local parks.', 'Central Park', '2026-06-07', '3 hours / week', 20),
+(1, 'Neighborhood Mural Project', 'Help design and paint community murals to beautify local neighborhoods and celebrate cultural heritage.', 'Westside Arts District', '2026-06-21', '4 hours / week', 12),
+(1, 'Home Repair for Seniors', 'Assist elderly residents with minor home repairs such as painting, fixing leaks, and installing safety rails.', 'Various Locations', '2026-07-05', '5 hours / week', 10),
+(1, 'Community Garden Build', 'Help construct raised garden beds and install irrigation systems for a new community garden.', 'Northside Community Park', '2026-07-12', '6 hours (one-time event)', 25),
+(1, 'Trail Restoration Crew', 'Work alongside park rangers to restore damaged hiking trails and install erosion-control measures.', 'Greenway Nature Reserve', '2026-08-02', '4 hours / week', 18),
+-- GreenHarvest Growers (org 2)
 (2, 'After-School Tutoring Program', 'Provide one-on-one tutoring in math, science, and reading to students in grades 3-8 after school hours.', 'Eastside Community Center', '2026-06-10', '2 hours / week', 15),
+(2, 'Urban Farm Volunteer Day', 'Help plant, water, and harvest crops at our urban farm that donates fresh produce to local food banks.', 'GreenHarvest Urban Farm', '2026-06-14', '3 hours / week', 20),
+(2, 'Composting Workshop', 'Teach community members how to compost at home and help set up composting stations in local parks.', 'Eastside Community Center', '2026-06-28', '2 hours / week', 8),
+(2, 'Farmers Market Support', 'Assist vendors at our weekly farmers market, helping with setup, customer service, and breakdown.', 'City Farmers Market', '2026-07-06', '4 hours / week', 12),
+(2, 'School Garden Educator', 'Visit local elementary schools to teach students about gardening, nutrition, and sustainable food systems.', 'Various Elementary Schools', '2026-07-20', '3 hours / week', 10),
+-- UnityServe Volunteers (org 3)
 (3, 'Monthly Food Drive', 'Help collect, sort, and distribute food donations to families in need throughout the city.', 'Downtown Food Bank', '2026-06-14', '4 hours / month', 30),
-(3, 'Community Health Fair', 'Assist with organizing and running free health screenings, fitness workshops, and wellness consultations.', 'Riverside Convention Center', '2026-07-19', '6 hours (one-time event)', 50);
+(3, 'Community Health Fair', 'Assist with organizing and running free health screenings, fitness workshops, and wellness consultations.', 'Riverside Convention Center', '2026-07-19', '6 hours (one-time event)', 50),
+(3, 'Homeless Shelter Meal Service', 'Prepare and serve meals to residents at the downtown homeless shelter every Sunday morning.', 'Unity Shelter Downtown', '2026-06-22', '3 hours / week', 15),
+(3, 'Youth Mentorship Program', 'Mentor at-risk youth through weekly one-on-one meetings focused on academics, life skills, and career exploration.', 'UnityServe Community Hub', '2026-07-07', '2 hours / week', 20),
+(3, 'Disaster Relief Supply Drive', 'Help sort and pack emergency supply kits for families displaced by natural disasters in our region.', 'UnityServe Warehouse', '2026-08-10', '4 hours / week', 35);
 
 INSERT INTO service_project_category (project_id, category_id) VALUES
+-- BrightFuture Builders projects
 (1, 1),
-(2, 2),
+(2, 3),
 (3, 3),
-(4, 4),
-(4, 3);
+(4, 1),
+(5, 1),
+-- GreenHarvest Growers projects
+(6, 2),
+(7, 1),
+(8, 1),
+(9, 3),
+(10, 2),
+-- UnityServe Volunteers projects
+(11, 3),
+(12, 4),
+(13, 3),
+(14, 2),
+(15, 3);
 
 -- Quick verification
 SELECT * FROM organization;
