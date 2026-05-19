@@ -1,0 +1,42 @@
+<%- include('./partials/header', { title }) %>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1><%= title %></h1>
+        </div>
+    </section>
+
+    <section class="org-section">
+        <div class="container">
+            <% if (organizationDetails) { %>
+                <div class="org-card">
+                    <div class="org-img-wrap">
+                        <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo" />
+                    </div>
+                    <div class="org-body">
+                        <h2><%= organizationDetails.name %></h2>
+                        <p><%= organizationDetails.description %></p>
+                        <p><strong>Contact:</strong> <%= organizationDetails.contact_email %></p>
+                    </div>
+                </div>
+
+                <h3>Service Projects</h3>
+                <% if (projects && projects.length) { %>
+                    <ul class="project-list">
+                        <% projects.forEach(function(project) { %>
+                            <li>
+                                <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                                <span> &mdash; <%= project.location %> (<%= new Date(project.date).toLocaleDateString() %>)</span>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p>No service projects found for this organization.</p>
+                <% } %>
+            <% } else { %>
+                <p>Organization not found.</p>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('./partials/footer') %>

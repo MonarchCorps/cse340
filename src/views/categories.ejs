@@ -1,0 +1,31 @@
+<%- include('./partials/header', { title }) %>
+
+	<section class="page-hero">
+		<div class="container">
+			<h1>
+				<%= title %>
+			</h1>
+			<p>Browse service project categories and find the cause that speaks to you.</p>
+		</div>
+	</section>
+
+	<section class="categories-section">
+		<div class="container">
+			<div class="category-grid">
+
+				<% if (categories && categories.length) { %>
+					<% categories.forEach(function(category) { %>
+					<article class="category-card">
+						<div class="category-icon">&#127775;</div>
+						<h2><%= category.name %></h2>
+					</article>
+					<% }) %>
+				<% } else { %>
+					<p>No categories available.</p>
+				<% } %>
+
+			</div>
+		</div>
+	</section>
+
+	<%- include('./partials/footer') %>

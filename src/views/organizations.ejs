@@ -1,0 +1,38 @@
+<%- include('./partials/header', { title }) %>
+
+	<section class="page-hero">
+		<div class="container">
+			<h1>
+				<%= title %>
+			</h1>
+			<p>Explore the organizations driving positive change in our community.</p>
+		</div>
+	</section>
+
+	<section class="org-section">
+		<div class="container">
+			<div class="org-grid">
+
+				<% if (organizations && organizations.length) { %>
+					<% organizations.forEach(function(org) { %>
+					<article class="org-card">
+						<div class="org-img-wrap">
+							<img src="/images/<%= org.logo_filename %>" alt="<%= org.name %> logo" />
+						</div>
+						<div class="org-body">
+							<h2><a href="/organization/<%= org.organization_id %>"><%= org.name %></a></h2>
+							<p><%= org.description %></p>
+							<p><strong>Contact:</strong> <%= org.contact_email %></p>
+							<a href="/organization/<%= org.organization_id %>" class="btn btn-outline">View Details</a>
+						</div>
+					</article>
+					<% }) %>
+				<% } else { %>
+					<p>No organizations available.</p>
+				<% } %>
+
+			</div>
+		</div>
+	</section>
+
+	<%- include('./partials/footer') %>
