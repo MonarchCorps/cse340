@@ -1,0 +1,43 @@
+<%- include('./partials/header', { title }) %>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1><%= title %></h1>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="container">
+            <% if (project) { %>
+                <article class="project-card project-detail">
+                    <div class="project-meta">
+                        <span class="project-org">
+                            <a href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
+                        </span>
+                    </div>
+
+                    <p><%= project.description %></p>
+
+                    <ul class="project-details">
+                        <li><strong>Location:</strong> <%= project.location %></li>
+                        <li><strong>Date:</strong> <%= new Date(project.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></li>
+                        <li><strong>Time Commitment:</strong> <%= project.time_commitment %></li>
+                        <li><strong>Volunteers Needed:</strong> <%= project.volunteers_needed %></li>
+                    </ul>
+
+                    <% if (categories && categories.length) { %>
+                        <div class="category-tags">
+                            <strong>Categories:</strong>
+                            <% categories.forEach(function(cat) { %>
+                                <a href="/category/<%= cat.category_id %>" class="category-tag"><%= cat.name %></a>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                </article>
+            <% } else { %>
+                <p>Project not found. <a href="/projects">Back to projects</a>.</p>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('./partials/footer') %>

@@ -45,4 +45,50 @@ const getProjectsByOrganizationId = async (organizationId) => {
     return result.rows;
 };
 
-export { getAllProjects, getProjectsByOrganizationId }
+const getProjectsByCategoryId = async (categoryId) => {
+    const query = `
+      SELECT sp.project_id, sp.title, sp.description, sp.location, sp.date
+      FROM service_project sp
+      JOIN service_project_category spc ON spc.project_id = sp.project_id
+      WHERE spc.category_id = $1
+      ORDER BY sp.date;
+    `;
+    const result = await db.query(query, [categoryId]);
+    return result.rows;
+};
+
+const getProjectById = async (projectId) => {
+    const query = `
+      SELECT
+        sp.project_id, sp.title, sp.description, sp.location,
+        sp.date, sp.time_commitment, sp.volunteers_needed, sp.organization_id,
+        o.name AS organization_name
+      FROM service_project sp
+      JOIN organization o ON o.organization_id = sp.organization_id
+      WHERE sp.project_id = $1;
+    `;
+    const result = await db.query(query, [projectId]);
+    return result.rows.length > 0 ? result.rows[0] : null;
+};
+
+const getUpcomingProjects = async () => {
+    const query = `
+      SELECT
+        sp.project_id, sp.title, sp.description, sp.location,
+        sp.date, sp.time_commitment, sp.volunteers_needed,
+        o.organization_id, o.name AS organization_name,
+        COALESCE(string_agg(c.name, ', ' ORDER BY c.name), '') AS categories
+      FROM service_project sp
+      JOIN organization o ON o.organization_id = sp.organization_id
+      LEFT JOIN service_project_category spc ON spc.project_id = sp.project_id
+      LEFT JOIN category c ON c.category_id = spc.category_id
+      WHERE sp.date >= CURRENT_DATE
+      GROUP BY sp.project_id, o.organization_id
+      ORDER BY sp.date ASC
+      LIMIT 5;
+    `;
+    const result = await db.query(query);
+    return result.rows;
+};
+
+export { getAllProjects, getProjectsByOrganizationId, getProjectsByCategoryId, getProjectById, getUpcomingProjects }
