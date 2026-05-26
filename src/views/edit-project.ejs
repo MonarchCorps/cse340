@@ -1,0 +1,108 @@
+<%- include('./partials/header', { title }) %>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1><%= title %></h1>
+            <p>Update the project details below.</p>
+        </div>
+    </section>
+
+    <section class="form-page">
+        <div class="container">
+            <% if (project) { %>
+                <div class="form-card">
+                    <form action="/edit-project/<%= project.project_id %>" method="POST">
+                        <div class="form-group">
+                            <label for="title">Project Title</label>
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                value="<%= project.title %>"
+                                maxlength="200"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea
+                                id="description"
+                                name="description"
+                                maxlength="1000"
+                                required
+                            ><%= project.description %></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                value="<%= project.location %>"
+                                maxlength="200"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                value="<%= project.date ? project.date.toISOString().split('T')[0] : '' %>"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organizationId">Organization</label>
+                            <select id="organizationId" name="organizationId" required>
+                                <option value="">Select an organization</option>
+                                <% organizations.forEach(org => { %>
+                                    <option value="<%= org.organization_id %>" <%= org.organization_id === project.organization_id ? 'selected' : '' %>>
+                                        <%= org.name %>
+                                    </option>
+                                <% }); %>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeCommitment">Time Commitment</label>
+                            <input
+                                type="text"
+                                id="timeCommitment"
+                                name="timeCommitment"
+                                value="<%= project.time_commitment %>"
+                                maxlength="100"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="volunteersNeeded">Volunteers Needed</label>
+                            <input
+                                type="number"
+                                id="volunteersNeeded"
+                                name="volunteersNeeded"
+                                value="<%= project.volunteers_needed %>"
+                                min="1"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a href="/project/<%= project.project_id %>" class="btn btn-outline">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            <% } else { %>
+                <p>Project not found. <a href="/projects">Back to projects</a>.</p>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('./partials/footer') %>

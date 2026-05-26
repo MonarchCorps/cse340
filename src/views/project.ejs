@@ -3,6 +3,9 @@
     <section class="page-hero">
         <div class="container">
             <h1><%= title %></h1>
+            <% if (project) { %>
+                <a href="/edit-project/<%= project.project_id %>" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Edit Project</a>
+            <% } %>
         </div>
     </section>
 

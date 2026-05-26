@@ -58,4 +58,20 @@ const getOrganizationDetails = async (organizationId) => {
     return result.rows[0].organization_id;
   };
 
-  export { getAllOrganizations, getOrganizationDetails, createOrganization };
+  const updateOrganization = async (organizationId, name, description, contactEmail) => {
+    const query = `
+      UPDATE organization
+      SET name = $1, description = $2, contact_email = $3
+      WHERE organization_id = $4
+      RETURNING organization_id;
+    `;
+    const result = await db.query(query, [name, description, contactEmail, organizationId]);
+
+    if (result.rows.length === 0) {
+      throw new Error('Organization not found or update failed');
+    }
+
+    return result.rows[0].organization_id;
+  };
+
+  export { getAllOrganizations, getOrganizationDetails, createOrganization, updateOrganization };

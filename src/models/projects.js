@@ -112,4 +112,21 @@ const createProject = async (title, description, location, date, organizationId,
     return result.rows[0].project_id;
 };
 
-export { getAllProjects, getProjectsByOrganizationId, getProjectsByCategoryId, getProjectById, getUpcomingProjects, createProject }
+const updateProject = async (projectId, title, description, location, date, organizationId, timeCommitment, volunteersNeeded) => {
+    const query = `
+      UPDATE service_project
+      SET title = $1, description = $2, location = $3, date = $4,
+          organization_id = $5, time_commitment = $6, volunteers_needed = $7
+      WHERE project_id = $8
+      RETURNING project_id;
+    `;
+    const result = await db.query(query, [title, description, location, date, organizationId, timeCommitment, volunteersNeeded, projectId]);
+
+    if (result.rows.length === 0) {
+        throw new Error('Project not found or update failed');
+    }
+
+    return result.rows[0].project_id;
+};
+
+export { getAllProjects, getProjectsByOrganizationId, getProjectsByCategoryId, getProjectById, getUpcomingProjects, createProject, updateProject }
