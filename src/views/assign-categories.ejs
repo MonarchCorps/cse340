@@ -1,0 +1,47 @@
+<%- include('./partials/header', { title }) %>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1><%= title %></h1>
+            <% if (project) { %>
+                <p><%= project.title %></p>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="form-page">
+        <div class="container">
+            <% if (project) { %>
+                <div class="form-card">
+                    <form action="/project/<%= project.project_id %>/assign-categories" method="POST">
+                        <fieldset class="checkbox-fieldset">
+                            <legend>Select Categories</legend>
+                            <div class="checkbox-grid">
+                                <% allCategories.forEach(function(cat) { %>
+                                    <% const isChecked = assignedCategories.some(a => a.category_id === cat.category_id); %>
+                                    <label class="checkbox-label">
+                                        <input
+                                            type="checkbox"
+                                            name="categoryIds"
+                                            value="<%= cat.category_id %>"
+                                            <%= isChecked ? 'checked' : '' %>
+                                        />
+                                        <span><%= cat.name %></span>
+                                    </label>
+                                <% }); %>
+                            </div>
+                        </fieldset>
+
+                        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                            <button type="submit" class="btn btn-primary">Save Categories</button>
+                            <a href="/project/<%= project.project_id %>" class="btn btn-outline">Back to Project</a>
+                        </div>
+                    </form>
+                </div>
+            <% } else { %>
+                <p>Project not found. <a href="/projects">Back to projects</a>.</p>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('./partials/footer') %>

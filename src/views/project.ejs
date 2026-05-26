@@ -33,6 +33,13 @@
                             <% }) %>
                         </div>
                     <% } %>
+
+                    <p><a href="/project/<%= project.project_id %>/assign-categories">Edit Categories</a></p>
+
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                        <a href="/new-project" class="btn btn-primary">Add Another Project</a>
+                        <a href="/projects" class="btn btn-outline">Back to Projects</a>
+                    </div>
                 </article>
             <% } else { %>
                 <p>Project not found. <a href="/projects">Back to projects</a>.</p>
