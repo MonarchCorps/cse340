@@ -1,0 +1,39 @@
+<%- include('./partials/header', { title }) %>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1><%= title %></h1>
+            <p>Update the category name below.</p>
+        </div>
+    </section>
+
+    <section class="form-page">
+        <div class="container">
+            <% if (category) { %>
+                <div class="form-card">
+                    <form action="/edit-category/<%= category.category_id %>" method="POST">
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value="<%= category.name %>"
+                                maxlength="100"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a href="/category/<%= category.category_id %>" class="btn btn-outline">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            <% } else { %>
+                <p>Category not found. <a href="/categories">Back to categories</a>.</p>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,31 @@
+<%- include('./partials/header', { title }) %>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1><%= title %></h1>
+            <p>Add a new category to help organize service projects.</p>
+        </div>
+    </section>
+
+    <section class="form-page">
+        <div class="container">
+            <div class="form-card">
+                <form action="/new-category" method="POST">
+                    <div class="form-group">
+                        <label for="name">Category Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            maxlength="100"
+                            required
+                        />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create Category</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+<%- include('./partials/footer') %>
