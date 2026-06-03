@@ -1,0 +1,54 @@
+<%- include('partials/header') %>
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Create an Account</h1>
+        <p>Join the community and start volunteering today</p>
+    </div>
+</section>
+
+<div class="auth-page">
+    <div class="auth-card">
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Jane Smith"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="At least 8 characters"
+                    required
+                    minlength="8"
+                />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="/login">Log in</a></p>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
