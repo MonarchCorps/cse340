@@ -3,7 +3,7 @@
     <section class="page-hero">
         <div class="container">
             <h1><%= title %></h1>
-            <% if (organizationDetails) { %>
+            <% if (organizationDetails && isAdmin) { %>
                 <a href="/edit-organization/<%= organizationDetails.organization_id %>" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Edit Organization</a>
             <% } %>
         </div>

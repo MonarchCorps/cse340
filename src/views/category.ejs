@@ -4,7 +4,7 @@
         <div class="container">
             <h1><%= title %></h1>
             <p>Service projects in this category.</p>
-            <% if (category) { %>
+            <% if (category && isAdmin) { %>
                 <a href="/edit-category/<%= category.category_id %>" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Edit Category</a>
             <% } %>
         </div>

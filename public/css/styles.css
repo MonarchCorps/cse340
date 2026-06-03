@@ -907,3 +907,74 @@ a:focus-visible,
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
+
+.dashboard-admin {
+	margin-top: 3rem;
+	padding-top: 2rem;
+	border-top: 2px solid var(--color-border);
+}
+
+.dashboard-admin h2 {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--color-secondary);
+	margin-bottom: 1.25rem;
+}
+
+/* === Users admin page === */
+.users-section {
+	padding: 3rem 1rem 5rem;
+}
+
+.users-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--color-surface);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-sm);
+	overflow: hidden;
+}
+
+.users-table th,
+.users-table td {
+	padding: 0.875rem 1rem;
+	text-align: left;
+	border-bottom: 1px solid var(--color-border);
+	font-size: 0.9rem;
+}
+
+.users-table th {
+	background-color: var(--color-secondary);
+	color: #fff;
+	font-weight: 600;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.users-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.users-table tbody tr:hover {
+	background-color: #f1f5f9;
+}
+
+.role-badge {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 600;
+	padding: 0.2rem 0.65rem;
+	border-radius: 999px;
+	text-transform: capitalize;
+}
+
+.role-badge--user {
+	background-color: #dbeafe;
+	color: #1d4ed8;
+}
+
+.role-badge--admin {
+	background-color: #fef3c7;
+	color: #92400e;
+}

@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<section class="page-hero">
+    <div class="container">
+        <h1><%= title %></h1>
+        <p>All accounts registered in the system</p>
+    </div>
+</section>
+
+<div class="users-section">
+    <div class="container">
+        <% if (users && users.length) { %>
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(function(user, index) { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td>
+                        <span class="role-badge role-badge--<%= user.role_name %>">
+                            <%= user.role_name %>
+                        </span>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <% } else { %>
+        <p>No users registered yet.</p>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

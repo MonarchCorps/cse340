@@ -6,7 +6,9 @@
 				<%= title %>
 			</h1>
 			<p>Find meaningful service projects and start making a difference today.</p>
+			<% if (isAdmin) { %>
 			<a href="/new-project" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Add a New Service Project</a>
+			<% } %>
 		</div>
 	</section>
 

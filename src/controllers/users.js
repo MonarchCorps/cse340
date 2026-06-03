@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { body, validationResult } from 'express-validator';
-import { createUser, authenticateUser } from '../models/users.js';
+import { createUser, authenticateUser, getAllUsers } from '../models/users.js';
 
 const SALT_ROUNDS = 10;
 
@@ -51,6 +51,19 @@ const processUserRegistrationForm = async (req, res) => {
     }
 };
 
+const requireRole = (roleName) => (req, res, next) => {
+    if (!req.session.user || req.session.user.role_name !== roleName) {
+        req.flash('error', 'You do not have permission to access that page.');
+        return res.redirect('/dashboard');
+    }
+    next();
+};
+
+const showUsersPage = async (req, res) => {
+    const users = await getAllUsers();
+    res.render('users', { title: 'Registered Users', users });
+};
+
 const requireLogin = (req, res, next) => {
     if (!req.session.user) {
         req.flash('error', 'You must be logged in to access that page.');
@@ -84,10 +97,10 @@ const processLoginForm = async (req, res) => {
 };
 
 const processLogout = (req, res) => {
-    req.session.destroy(() => {
+    req.session.regenerate(() => {
         req.flash('success', 'You have been logged out.');
         res.redirect('/login');
     });
 };
 
-export { showUserRegistrationForm, processUserRegistrationForm, registrationValidation, showLoginForm, processLoginForm, processLogout, requireLogin, showDashboard };
+export { showUserRegistrationForm, processUserRegistrationForm, registrationValidation, showLoginForm, processLoginForm, processLogout, requireLogin, requireRole, showDashboard, showUsersPage };

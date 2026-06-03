@@ -53,6 +53,7 @@ app.use((req, res, next) => {
 // Middleware to make NODE_ENV and login state available to all templates
 app.use((req, res, next) => {
     res.locals.isLoggedIn = !!(req.session && req.session.user);
+    res.locals.isAdmin = !!(req.session && req.session.user && req.session.user.role_name === 'admin');
     res.locals.NODE_ENV = NODE_ENV;
     next();
 });

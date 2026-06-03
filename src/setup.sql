@@ -118,3 +118,9 @@ CREATE TABLE IF NOT EXISTS users (
     role_id INTEGER REFERENCES roles(role_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Grader admin test account (password: cse340!)
+INSERT INTO users (name, email, password_hash, role_id)
+SELECT 'Admin', 'admin@example.com', '$2b$10$VFbPQxhrdKevqBxzv9EMP.P1CgslYh7xy2BDqTf9NUNsMAHji27KG',
+       (SELECT role_id FROM roles WHERE role_name = 'admin')
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE email = 'admin@example.com');
