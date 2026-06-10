@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import { body, validationResult } from 'express-validator';
 import { createUser, authenticateUser, getAllUsers } from '../models/users.js';
+import { getVolunteerProjectsByUserId } from '../models/volunteers.js';
 
 const SALT_ROUNDS = 10;
 
@@ -72,9 +73,10 @@ const requireLogin = (req, res, next) => {
     next();
 };
 
-const showDashboard = (req, res) => {
-    const { name, email } = req.session.user;
-    res.render('dashboard', { title: 'Dashboard', name, email });
+const showDashboard = async (req, res) => {
+    const { name, email, user_id } = req.session.user;
+    const volunteerProjects = await getVolunteerProjectsByUserId(user_id);
+    res.render('dashboard', { title: 'Dashboard', name, email, volunteerProjects });
 };
 
 const showLoginForm = (req, res) => {

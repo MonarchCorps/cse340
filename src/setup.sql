@@ -119,6 +119,14 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Volunteer signup table (many-to-many: users <-> service_project)
+CREATE TABLE IF NOT EXISTS user_project (
+    user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+    project_id INTEGER NOT NULL REFERENCES service_project(project_id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, project_id)
+);
+
 -- Grader admin test account (password: cse340!)
 INSERT INTO users (name, email, password_hash, role_id)
 SELECT 'Admin', 'admin@example.com', '$2b$10$VFbPQxhrdKevqBxzv9EMP.P1CgslYh7xy2BDqTf9NUNsMAHji27KG',

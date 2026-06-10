@@ -5,6 +5,7 @@ import { showOrganizationsPage, showOrganizationDetailsPage, showNewOrganization
 import { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, showEditProjectForm, processEditProjectForm, projectValidation } from './controllers/projects.js';
 import { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm, categoryValidation } from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
+import { processAddVolunteer, processRemoveVolunteer } from './controllers/volunteers.js';
 import { showUserRegistrationForm, processUserRegistrationForm, registrationValidation, showLoginForm, processLoginForm, processLogout, requireLogin, requireRole, showDashboard, showUsersPage } from './controllers/users.js';
 
 const router = express.Router();
@@ -49,6 +50,10 @@ router.post('/register', registrationValidation, processUserRegistrationForm);
 router.get('/login', showLoginForm);
 router.post('/login', processLoginForm);
 router.get('/logout', processLogout);
+
+// Volunteer routes (login required)
+router.post('/project/:id/volunteer', requireLogin, processAddVolunteer);
+router.post('/project/:id/unvolunteer', requireLogin, processRemoveVolunteer);
 
 // Protected routes
 router.get('/dashboard', requireLogin, showDashboard);

@@ -978,3 +978,89 @@ a:focus-visible,
 	background-color: #fef3c7;
 	color: #92400e;
 }
+
+/* === Volunteer section (project detail page) === */
+.volunteer-section {
+	margin-top: 1.75rem;
+	padding: 1.25rem 1.5rem;
+	background: #f0fdf4;
+	border: 1px solid #bbf7d0;
+	border-radius: var(--radius);
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.volunteer-status {
+	font-weight: 600;
+	color: #15803d;
+	flex: 1;
+}
+
+.volunteer-status::before {
+	content: '✓ ';
+}
+
+/* === Volunteer list (dashboard) === */
+.dashboard-volunteers {
+	margin-bottom: 2.5rem;
+	padding-bottom: 2.5rem;
+	border-bottom: 2px solid var(--color-border);
+}
+
+.dashboard-volunteers h2 {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--color-secondary);
+	margin-bottom: 1.25rem;
+}
+
+.volunteer-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.volunteer-item {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	padding: 1rem 1.25rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	box-shadow: var(--shadow-sm);
+}
+
+.volunteer-info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.volunteer-info a {
+	color: var(--color-secondary);
+	font-size: 1rem;
+}
+
+.volunteer-info a:hover {
+	color: var(--color-primary);
+}
+
+.volunteer-info span {
+	font-size: 0.8rem;
+	color: var(--color-text-muted);
+}
+
+.volunteer-empty {
+	color: var(--color-text-muted);
+	font-size: 0.95rem;
+}
+
+.btn-sm {
+	padding: 0.35rem 0.85rem;
+	font-size: 0.8rem;
+}

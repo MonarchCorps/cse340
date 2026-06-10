@@ -37,6 +37,29 @@
             </div>
         </div>
 
+        <div class="dashboard-volunteers">
+            <h2>My Volunteer Commitments</h2>
+            <% if (volunteerProjects && volunteerProjects.length) { %>
+                <ul class="volunteer-list">
+                    <% volunteerProjects.forEach(function(project) { %>
+                    <li class="volunteer-item">
+                        <div class="volunteer-info">
+                            <a href="/project/<%= project.project_id %>"><strong><%= project.title %></strong></a>
+                            <span><%= project.organization_name %> &middot; <%= new Date(project.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></span>
+                            <span><%= project.location %> &middot; <%= project.time_commitment %></span>
+                        </div>
+                        <form action="/project/<%= project.project_id %>/unvolunteer" method="POST">
+                            <input type="hidden" name="returnTo" value="/dashboard">
+                            <button type="submit" class="btn btn-sm btn-outline">Remove</button>
+                        </form>
+                    </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="volunteer-empty">You haven't signed up for any projects yet. <a href="/projects">Browse projects</a> to find one!</p>
+            <% } %>
+        </div>
+
         <% if (isAdmin) { %>
         <div class="dashboard-admin">
             <h2>Admin</h2>
