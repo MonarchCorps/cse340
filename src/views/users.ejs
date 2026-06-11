@@ -17,6 +17,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Volunteered Projects</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,13 @@
                         <span class="role-badge role-badge--<%= user.role_name %>">
                             <%= user.role_name %>
                         </span>
+                    </td>
+                    <td>
+                        <% if (user.volunteered_projects) { %>
+                            <%= user.volunteered_projects %>
+                        <% } else { %>
+                            <span class="text-muted">None</span>
+                        <% } %>
                     </td>
                 </tr>
                 <% }) %>

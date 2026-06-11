@@ -30,9 +30,13 @@ const findUserByEmail = async (email) => {
 
 const getAllUsers = async () => {
     const query = `
-        SELECT u.user_id, u.name, u.email, r.role_name
+        SELECT u.user_id, u.name, u.email, r.role_name,
+               COALESCE(STRING_AGG(sp.title, ', ' ORDER BY sp.date), '') AS volunteered_projects
         FROM users u
         JOIN roles r ON u.role_id = r.role_id
+        LEFT JOIN user_project up ON u.user_id = up.user_id
+        LEFT JOIN service_project sp ON up.project_id = sp.project_id
+        GROUP BY u.user_id, u.name, u.email, r.role_name
         ORDER BY u.created_at ASC
     `;
     const result = await db.query(query);
